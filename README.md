@@ -9,3 +9,20 @@ The ECG recordings are preprocessed using filtering and normalization techniques
 The proposed model is evaluated on the PhysioNet Apnea-ECG dataset using 10-fold cross-validation, achieving strong performance with 89.14% accuracy, 91.79% sensitivity, 86.49% specificity, 89.42% F1-score, and an AUC-ROC of 0.9553, demonstrating robust generalization with minimal overfitting.
 
 Owing to its high performance and low computational complexity, this approach is well-suited for real-world OSA screening applications and provides a scalable foundation for future clinical and deployment-oriented enhancements.
+## Methodology
+
+1. ECG Preprocessing
+   - 50 Hz notch filtering
+   - 0.5 Hz high-pass filtering
+   - Z-score normalization
+   - 1-minute segmentation
+
+2. Feature Extraction
+   - Time-domain HRV features
+   - Frequency-domain features
+   - Non-linear features
+
+3. Classification
+   - 1D CNN for spatial feature learning
+   - LSTM for temporal dependency modeling
+   - Softmax output for binary classification
