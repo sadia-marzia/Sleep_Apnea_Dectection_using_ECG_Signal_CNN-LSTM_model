@@ -1,28 +1,109 @@
-# Obstructive Sleep Apnea Detection using ECG Signals with a 1D CNN-LSTM Model
+# Sleep Apnea Detection using ECG Signal (CNN–LSTM)
 
-Obstructive Sleep Apnea (OSA) is a prevalent sleep disorder that can lead to serious health complications if left undiagnosed. Conventional diagnosis using Polysomnography (PSG) is complex, expensive, and time-consuming, limiting its accessibility for large-scale screening.
+This repository presents a deep learning–based system for **automatic detection of Obstructive Sleep Apnea (OSA)** using single-lead ECG signals.  
+The proposed approach combines **1D Convolutional Neural Networks (CNN)** and **Long Short-Term Memory (LSTM)** networks to learn both spatial and temporal patterns from ECG-derived features.
 
-This repository presents an automatic OSA detection framework based on electrocardiogram (ECG) signals using a one-dimensional Convolutional Neural Network combined with Long Short-Term Memory (1D CNN-LSTM) architecture. ECG signals provide critical cardiac information closely linked to respiratory dynamics during sleep, making them suitable for non-intrusive apnea detection.
+The model is evaluated on the **PhysioNet Apnea-ECG dataset** and achieves strong performance while maintaining low computational complexity, making it suitable for real-world and remote healthcare applications.
 
-The ECG recordings are preprocessed using filtering and normalization techniques to enhance signal quality. A comprehensive set of 41 handcrafted features spanning time-domain, frequency-domain, and non-linear domain is extracted to capture physiological variations associated with apnea events. The CNN layers learn discriminative spatial features, while the LSTM layers model temporal dependencies essential for accurate classification.
+---
 
-The proposed model is evaluated on the PhysioNet Apnea-ECG dataset using 10-fold cross-validation, achieving strong performance with 89.14% accuracy, 91.79% sensitivity, 86.49% specificity, 89.42% F1-score, and an AUC-ROC of 0.9553, demonstrating robust generalization with minimal overfitting.
+## 🔬 Problem Motivation
 
-Owing to its high performance and low computational complexity, this approach is well-suited for real-world OSA screening applications and provides a scalable foundation for future clinical and deployment-oriented enhancements.
-## Methodology
+Obstructive Sleep Apnea (OSA) is a common but underdiagnosed sleep disorder that can lead to serious cardiovascular and neurological complications.  
+Traditional diagnosis using **Polysomnography (PSG)** is expensive, complex, and time-consuming.
 
-1. ECG Preprocessing
-   - 50 Hz notch filtering
-   - 0.5 Hz high-pass filtering
-   - Z-score normalization
-   - 1-minute segmentation
+ECG-based automated detection provides a **cost-effective and scalable alternative**, especially suitable for wearable and remote monitoring systems.
 
-2. Feature Extraction
-   - Time-domain HRV features
-   - Frequency-domain features
-   - Non-linear features
+---
 
-3. Classification
-   - 1D CNN for spatial feature learning
-   - LSTM for temporal dependency modeling
-   - Softmax output for binary classification
+## 🧠 Proposed Architecture Overview
+
+The system follows a **feature-based deep learning pipeline**, where handcrafted ECG features are fed into a CNN–LSTM model for classification.
+
+### 🔷 High-Level Pipeline
+
+ECG Signal
+↓
+Preprocessing
+↓
+Segmentation
+↓
+Feature Extraction
+↓
+Feature Scaling & Balancing
+↓
+CNN Feature Learning
+↓
+LSTM Temporal Modeling
+↓
+Softmax Classifier
+(Apnea / Non-Apnea)
+
+
+---
+
+## 📊 Feature Set Description (40 Features)
+
+### ⏱️ Time-Domain (19)
+
+### 📈 Frequency-Domain (10)
+
+### 🔄 Non-Linear (11)
+
+---
+
+## ⚙️ Training Strategy
+
+- **10-Fold Cross-Validation**
+- **SMOTE** for class imbalance handling
+- **MinMax normalization**
+- **L2 regularization + Dropout** to prevent overfitting
+- **Early stopping + ReduceLROnPlateau**
+
+---
+
+## 📈 Performance (PhysioNet Apnea-ECG)
+
+| Metric | Value |
+|------|------|
+| Accuracy | **89.14%** |
+| Sensitivity | **91.79%** |
+| Specificity | **86.49%** |
+| F1-score | **89.42%** |
+| AUC-ROC | **0.9553** |
+
+---
+
+## 🧪 Repository Structure
+
+Sleep_Apnea_Detection_using_ECG_Signal_CNN-LSTM_model/
+│
+├── src/
+│ ├── preprocessing/
+│ ├── training/
+│ ├── inference/
+│
+├── artifacts/
+│ ├── cnn_lstm_apneamodel.keras
+│ ├── mean_imputer.pkl
+│ ├── minmax_scaler.pkl
+│ └── feature_order.pkl
+│
+├── data/
+├── README.md
+├── requirements.txt
+
+
+---
+
+## 🚀 Deployment Ready
+
+The trained model and preprocessing artifacts are saved separately and can be directly used in:
+- **FastAPI REST service**
+- **Docker container**
+- **Cloud deployment (AWS / GCP / Azure)**
+- **Remote health monitoring systems**
+
+
+⭐ If you find this work useful, please consider starring the repository also cite this paper [https://doi.org/10.1007/978-3-032-11335-1_15]
+
