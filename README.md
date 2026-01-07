@@ -78,20 +78,35 @@ Softmax Classifier
 
 Sleep_Apnea_Detection_using_ECG_Signal_CNN-LSTM_model/
 │
+
 ├── src/
+
 │ ├── preprocessing/
+
 │ ├── training/
+
 │ ├── inference/
+
 │
+
 ├── artifacts/
+
 │ ├── cnn_lstm_apneamodel.keras
+
 │ ├── mean_imputer.pkl
+
 │ ├── minmax_scaler.pkl
+
 │ └── feature_order.pkl
+
 │
+
 ├── data/
+
 ├── README.md
+
 ├── requirements.txt
+
 
 
 ---
