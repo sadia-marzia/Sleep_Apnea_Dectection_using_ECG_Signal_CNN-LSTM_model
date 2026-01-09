@@ -16,50 +16,10 @@ ECG-based automated detection provides a **cost-effective and scalable alternati
 
 ---
 
-## 🧠 Proposed Architecture Overview
+## Methodology
 
-The system follows a **feature-based deep learning pipeline**, where handcrafted ECG features are fed into a CNN–LSTM model for classification.
-
-### 🔷 High-Level Pipeline
-
-ECG Signal
-↓
-Preprocessing
-↓
-Segmentation
-↓
-Feature Extraction
-↓
-Feature Scaling & Balancing
-↓
-CNN Feature Learning
-↓
-LSTM Temporal Modeling
-↓
-Softmax Classifier
-(Apnea / Non-Apnea)
-
-
----
-
-## 📊 Feature Set Description (40 Features)
-
-### ⏱️ Time-Domain (19)
-
-### 📈 Frequency-Domain (10)
-
-### 🔄 Non-Linear (11)
-
----
-
-## ⚙️ Training Strategy
-
-- **10-Fold Cross-Validation**
-- **SMOTE** for class imbalance handling
-- **MinMax normalization**
-- **L2 regularization + Dropout** to prevent overfitting
-- **Early stopping + ReduceLROnPlateau**
-
+This repository implements the CNN–LSTM-based framework proposed in our Springer CCIS paper.
+For a complete description of the signal preprocessing, feature extraction, model architecture, and evaluation protocol, please refer to the published article.
 ---
 
 ## 📈 Performance (PhysioNet Apnea-ECG)
@@ -108,17 +68,25 @@ Sleep_Apnea_Detection_using_ECG_Signal_CNN-LSTM_model/
 ├── requirements.txt
 
 
+## 📄 Related Publication
+
+This repository is associated with the following peer-reviewed publication:
+
+**S. Marzia, M. J. Islam, R. Raen**,  
+*Obstructive Sleep Apnea Detection Using 1D CNN-LSTM Approach*,  
+International Conference on Data Science, AI and Applications (ICDSAIA 2025),  
+Springer, *Communications in Computer and Information Science*, Vol. 2681.
+
+**DOI:** https://doi.org/10.1007/978-3-032-11335-1_15
+
+⚠️ *Note:* The published manuscript is not distributed in this repository due to publisher licensing restrictions.
 
 ---
 
-## 🚀 Deployment Ready
+## ⭐ Citation & Acknowledgment
 
-The trained model and preprocessing artifacts are saved separately and can be directly used in:
-- **FastAPI REST service**
-- **Docker container**
-- **Cloud deployment (AWS / GCP / Azure)**
-- **Remote health monitoring systems**
+If you find this work useful for your research or application, please consider:
 
+⭐ Starring this repository
 
-⭐ If you find this work useful, please consider starring the repository also cite this paper [https://doi.org/10.1007/978-3-032-11335-1_15]
-
+📖 Citing the associated paper
